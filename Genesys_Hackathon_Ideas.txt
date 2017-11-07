@@ -1,0 +1,26 @@
+1) ~~~AI~~~ assistant that customers can speak with even before they speak to a live agent to help resolve issues and decrease traffic to the call centre
+    - Use keywords to recommend and forward them to specific department
+    - Customer side -> call in to make complaint (say issue) - it will parse that and direct it to wherever you need to go
+    - PureCloud can be applied to mostly retail businesses (most complaints)
+    - Add into an existing system without breaking features
+    
+* An app to help pick out key words so that CSR wouldn't have to remember what was said long after the call (using IBM Watson's API)
+
+- Utilize ML (Tensorflow) to better predict what customers may require based on previous contact
+
+2) App to aggregate customer complaints (small businesses only) - Some companies respond slowly on Social Media when they hear complaints and/or don't address them at all => tarnishes their company reputation (helps maintain or establish an improved social media presence)
+    - Create an app for PureCloud that aggregates all complaints in one area to equally address them all
+    - Person to person point of contact when a customer calls in with a complaint
+    - Communicate between customers and businesses so it's not a "one-sided conversation" (Yelp for companies)
+
+Implement on platforms such as:
+    -> Computer
+    -> Telephone
+
+3) An app that serves like Yelp for companies since companies can't track down and help customers on every website
+    -> Companies has profile, customer puts complaint on twitter -> gives a way to reach out to these customers
+    -> Customers should be able to complain on whatever platform they're comfortable with
+
+    -> do companies want to show what they did to help solve the problem to others? DM but showing the issue was resolved
+
+- Like a messaging system 
