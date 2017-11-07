@@ -111,7 +111,8 @@ app.get("/my_info", function(req, res){
         console.log("Got response for /users/me");
         console.log(user);
         console.log(e);
-         res.send(user);
+        var authenticatedUser = res.json(user);
+        res.send(authenticatedUser);
     });
 });
 
