@@ -13,7 +13,7 @@ var client_secret = 'sZF-yCB0BsaZs6RSuErsjGskO0ouMkjob4elLBjqVSs';
 var app = express();
 var sessionMap = {};
 
-// Our Application
+// Validation function
 var authvalidation = function(req, res, next) {
     console.log('\n['+req.method+' '+req.url+']');
 
@@ -25,7 +25,7 @@ var authvalidation = function(req, res, next) {
         var redirectUri = "https://login.mypurecloud.com/oauth/authorize?" +
                     "response_type=code" +
                     "&client_id=" + client_id
-                    + "&redirect_uri=/oauth/callback";
+                    + "&redirect_uri=http://localhost:8085/oauth/callback";
 
         console.log("redirecting to " + redirectUri);
         res.redirect(redirectUri);  // Cause users browser to redirect to PureCloud
@@ -44,13 +44,14 @@ app.use(cookieParser());
 app.use(authvalidation);
 app.use(express.static(__dirname));
 
-// app.get("/", function(req, res){
-//     res.redirect("/my_info.html");
-// })
+// Main of our Application
+app.get("/", function(req, res){
+    res.redirect("/my_info.html");
+})
 
 // This route handles the oauth callback once the user has signed in!
 app.get("/oauth/callback", function(req,res){
-    //the authorization page has called this callback and now we need to get the bearer token
+    // The authorization page has called this callback and now we need to get the bearer token
     console.log("oauth callback")
     console.log(req.query.code)
 
@@ -61,7 +62,7 @@ app.get("/oauth/callback", function(req,res){
     var tokenFormData = {
         grant_type: "authorization_code",
         code: authCode, //from the query string parameters sent to this url
-        redirect_uri : "/oauth/callback"
+        redirect_uri : "http://localhost:8085/oauth/callback"
     }
 
     // Build the Authorization post
@@ -91,12 +92,11 @@ app.get("/oauth/callback", function(req,res){
 
         // Send the session id back as a cookie
         res.cookie('session', sessionId);
-        res.redirect("/my_info.html");
+        res.redirect("/my_info");
     });
 });
 
-// Wrap up the api/v2/users/me call inside a /me route
-app.get("/me", function(req, res){
+app.get("/my_info", function(req, res){
     //get the session from map using the cookie
     var oauthId = sessionMap[req.cookies.session];
 
@@ -112,28 +112,8 @@ app.get("/me", function(req, res){
         console.log(user);
         console.log(e);
          res.send(user);
-    })
+    });
 });
-
-// TODO: Implement logout functionality. Help URL: https://developer.mypurecloud.com/api/rest/authorization/
-// app.get("/logout", function(req, res){
-//     //get the session from map using the cookie
-//     var oauthId = sessionMap[req.cookies.session];
-
-//     var getData = {
-//         url:'https://api.mypurecloud.com/api/v2/users/me',
-//         auth: {
-//             bearer: oauthId
-//         }
-//     };
-
-//     request.get(getData, function (e, r, user) {
-//         console.log("Got response for /users/me");
-//         console.log(user);
-//         console.log(e);
-//          res.send(user);
-//     })
-// });
 
 // Start server with our Express Middleware on port 8085
 var httpServer = http.createServer(app);
