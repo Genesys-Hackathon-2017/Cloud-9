@@ -1,34 +1,28 @@
-//Node Modules
 var http = require("http");
+
 var express = require('express');
+var app = express();
 var uuid = require('node-uuid');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var request = require('request');
 
-// Hardcoded variables
-var client_id = '73303454-f95d-4f29-8f44-88668188af19';
-var client_secret = 'sZF-yCB0BsaZs6RSuErsjGskO0ouMkjob4elLBjqVSs';
+var client_id = 'efb6698a-5f76-4f90-bf29-9a69a3555602';
+var client_secret = '3pDfUuU1h8nK5XZigBp2ogc1GZkII4KvJKBmKqEGnt0';
 
-var app = express();
-var sessionMap = {};
-
-// Validation function
 var authvalidation = function(req, res, next) {
     console.log('\n['+req.method+' '+req.url+']');
-
     //if we don't have a session then redirect them to the login page
     if((req.cookies && !(req.cookies.session && sessionMap[req.cookies.session])) &&
             req.url.indexOf("oauth") == -1){
-
-        // Redirect the user to authorize with purecloud - we receive an authCode to use for subsequent requests
+        //redirect the user to authorize with purecloud
         var redirectUri = "https://login.mypurecloud.com/oauth/authorize?" +
                     "response_type=code" +
-                    "&client_id=" + client_id
-                    + "&redirect_uri=http://localhost:8085/oauth/callback";
+                    "&client_id=" + client_id +
+                    "&redirect_uri=http://localhost:8085/oauth2/callback";
 
         console.log("redirecting to " + redirectUri);
-        res.redirect(redirectUri);  // Cause users browser to redirect to PureCloud
+        res.redirect(redirectUri);
 
         return;
     }
@@ -38,34 +32,30 @@ var authvalidation = function(req, res, next) {
     next();
 }
 
-// Express Middleware - dependencies for Express app
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(authvalidation);
 app.use(express.static(__dirname));
 
-// Main of our Application
+var sessionMap ={};
+
 app.get("/", function(req, res){
     res.redirect("/my_info.html");
 })
 
-// This route handles the oauth callback once the user has signed in!
-app.get("/oauth/callback", function(req,res){
-    // The authorization page has called this callback and now we need to get the bearer token
+//this route handles the oauth callback
+app.get("/oauth2/callback", function(req,res){
+    //the authorization page has called this callback and now we need to get the bearer token
     console.log("oauth callback")
     console.log(req.query.code)
-
-    // Code we're trying to get back from PureCloud - pull as a request off request
     var authCode = req.query.code;
 
-    // Build the Authorization form
     var tokenFormData = {
         grant_type: "authorization_code",
         code: authCode, //from the query string parameters sent to this url
-        redirect_uri : "http://localhost:8085/oauth/callback"
+        redirect_uri : "http://localhost:8085/oauth2/callback"
     }
 
-    // Build the Authorization post
     var postData = {
         url:'https://login.mypurecloud.com/oauth/token',
         form: tokenFormData,
@@ -75,28 +65,27 @@ app.get("/oauth/callback", function(req,res){
         }
     }
 
-    // Post back to /oauth/token with the client id and secret as well as the auth code that was sent to us.
+    //post back to /oauth/token with the client id and secret as well as the auth code that was sent to us.
     request.post(postData, function(err,httpResponse,body){
         console.log("got token data back: ")
         console.log(body);
 
         var tokenResponse = JSON.parse(body);
 
-        // Create a new session ID to put into our tracked sessions
-        // as well as to send back as a cookie
         var sessionId = uuid.v4();
 
-        // Store the session id as a key in the session map, the value is the bearer token for purecloud.
-        // We want to keep that secure so won't send that back to the client!
+        //store the session id as a key in the session map, the value is the bearer token for purecloud.
+        //we want to keep that secure so won't send that back to the client
         sessionMap[sessionId] = tokenResponse.access_token;
 
-        // Send the session id back as a cookie
+        //send the session id back as a cookie
         res.cookie('session', sessionId);
-        res.redirect("/my_info");
+        res.redirect("/my_info.html");
     });
 });
 
-app.get("/my_info", function(req, res){
+//wrap up the api/v2/users/me call inside a /me route
+app.get("/me", function(req, res){
     //get the session from map using the cookie
     var oauthId = sessionMap[req.cookies.session];
 
@@ -111,11 +100,9 @@ app.get("/my_info", function(req, res){
         console.log("Got response for /users/me");
         console.log(user);
         console.log(e);
-        var authenticatedUser = res.json(user);
-        res.send(authenticatedUser);
-    });
+         res.send(user);
+    })
 });
 
-// Start server with our Express Middleware on port 8085
 var httpServer = http.createServer(app);
 httpServer.listen('8085');

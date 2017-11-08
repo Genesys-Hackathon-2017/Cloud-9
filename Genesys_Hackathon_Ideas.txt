@@ -1,8 +1,18 @@
-1) ~~~AI~~~ assistant that customers can speak with even before they speak to a live agent to help resolve issues and decrease traffic to the call centre
+1) An AI assistant, Max, that offers a solution to a common problem affecting all customer contact centres - wait times. When all agents are occupied, Max steps in and greets new customers connecting via phone or chat with the solution to their problem whether it be a simple return or something more complex. Max enables customers to receive timely support whilst reducing the traffic to customer contact centres.
+
+Selling Points:
+    - Reduces wait times (especially anxiety with having to stay on the phone for long periods of time)
+    - Increases overall customer satisfaction
+
+Features:
     - Use keywords to recommend and forward them to specific department
     - Customer side -> call in to make complaint (say issue) - it will parse that and direct it to wherever you need to go
     - PureCloud can be applied to mostly retail businesses (most complaints)
     - Add into an existing system without breaking features
+
+"Max - an AI assistant that helps those who aren't being helped"
+--------------------------------------------------------------------------------------------------------------------------
+MISC:
     
 * An app to help pick out key words so that CSR wouldn't have to remember what was said long after the call (using IBM Watson's API)
 
@@ -22,5 +32,3 @@ Implement on platforms such as:
     -> Customers should be able to complain on whatever platform they're comfortable with
 
     -> do companies want to show what they did to help solve the problem to others? DM but showing the issue was resolved
-
-- Like a messaging system 
