@@ -1,4 +1,3 @@
-
 //line used for prompting and conversationV1 is used to connect to the watson api
 var prompt = require('prompt-sync')();
 var ConversationV1 = require('watson-developer-cloud/conversation/v1');

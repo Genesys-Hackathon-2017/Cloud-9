@@ -6,9 +6,6 @@
     src="https://code.jquery.com/jquery-1.11.3.min.js"
     integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g="
     crossorigin="anonymous"></script>
-</head>
-<body>
-    <h1>You're authenticated!</h1>
 
     <script type="text/javascript">
         const params = {};
@@ -38,6 +35,14 @@
                     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + authToken);},
                     success: function(data) {
                         console.log(data);
+
+                        // Populate HTML elements dynamically
+                        var userName = document.getElementById('name');
+                        userName.innerHTML = data.name;
+                        var userState = document.getElementById('state');
+                        userState.innerHTML = data.state;
+                        var userImage = document.getElementById('image');
+                        userImage.src = data.images[1].imageUri;
                     }
                 });
 
@@ -55,5 +60,14 @@
         // By calling the function above, we actively get the data from the API
         getUserInfo();
     </script>
+
+</head>
+<body>
+    <h1>Welcome <span id="name"></span>! You've been successfully authenticated :)</h1>
+
+    <div id="details">
+        <p>Your state is: <span id="state"></span></p>
+        <p>Your profile image is: <img id="image"></span></p>
+    </div>
 </body>
 </html>
