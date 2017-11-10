@@ -1,7 +1,6 @@
 //Node Modules
 var http = require("http");
 var express = require('express');
-var uuid = require('node-uuid');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var request = require('request');
@@ -12,7 +11,6 @@ var sessionMap = {};
 // Express Middleware - dependencies for Express app
 app.use(bodyParser.json());
 app.use(cookieParser());
-// app.use(authvalidation);
 app.use(express.static(__dirname));
 
 // Hardcoded variables
@@ -46,7 +44,7 @@ app.get("/", function(req, res){
           'expand': ["expand_example"], // [String] | Which fields, if any, to expand
           'state': "active" // String | Only list users of this state
       };
-      usersApi.getUsers(opts)
+      usersApi.getUsersMe(opts)
       .then(function(data) {
         console.log(`getUsers success! data: ${JSON.stringify(data, null, 2)}`);
     })
@@ -55,7 +53,7 @@ app.get("/", function(req, res){
         console.error(error);
     });
   })
-    .then(function(permissions) {
+    .then(function(data) {
         // Handle successful result!
         res.redirect("/my_info");
     })
