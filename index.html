@@ -28,25 +28,32 @@
             console.log("Could not find authToken");
         }
 
-        if(window.location.hash) {
-            $.ajax({
-                url: "https://api.mypurecloud.com/api/v2/users/me",
-                type: "GET",
-                beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + authToken);},
-                success: function(data) {
-                    console.log(data);
+        // console.log(window.location.hash);
+
+        function getUserInfo() {
+            if(window.location.hash) {
+                $.ajax({
+                    url: "https://api.mypurecloud.com/api/v2/users/me",
+                    type: "GET",
+                    beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + authToken);},
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+
+                location.hash=''
+            } else {
+                var queryStringData = {
+                    response_type : "token",
+                    client_id : "12df5196-bdda-4fe0-8f75-dd1d6bdd8b67",
+                    redirect_uri : "http://localhost:3000/index.html"
                 }
-            });
-            
-            location.hash=''
-        } else {
-            var queryStringData = {
-                response_type : "token",
-                client_id : "12df5196-bdda-4fe0-8f75-dd1d6bdd8b67",
-                redirect_uri : "http://localhost:3000/index.html"
+                window.location.replace("https://login.mypurecloud.com/oauth/authorize?" + jQuery.param(queryStringData));
             }
-            window.location.replace("https://login.mypurecloud.com/oauth/authorize?" + jQuery.param(queryStringData));
-        }
+        };
+
+        // By calling the function above, we actively get the data from the API
+        getUserInfo();
     </script>
 </body>
 </html>
