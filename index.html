@@ -1,1 +1,52 @@
-<p>After authenticating via PureCloud, we're on the home (index.html)</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home sweet home</title>
+    <script
+    src="https://code.jquery.com/jquery-1.11.3.min.js"
+    integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>You're authenticated!</h1>
+
+    <script type="text/javascript">
+        const params = {};
+        let authToken;
+        if (window.location.hash && window.location.hash.length > 1) {
+            const hashParams = window.location.hash.substr(1).split('&');
+            hashParams.forEach(param => {
+              const [key, value] = param.split('=');
+              params[key] = value;
+          });
+        }
+
+        if (params.access_token) {
+            authToken = params.access_token;
+            console.log("authToken is: " + authToken);
+        } else {
+            console.log("Could not find authToken");
+        }
+
+        if(window.location.hash) {
+            $.ajax({
+                url: "https://api.mypurecloud.com/api/v2/users/me",
+                type: "GET",
+                beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + authToken);},
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+            
+            location.hash=''
+        } else {
+            var queryStringData = {
+                response_type : "token",
+                client_id : "12df5196-bdda-4fe0-8f75-dd1d6bdd8b67",
+                redirect_uri : "http://localhost:3000/index.html"
+            }
+            window.location.replace("https://login.mypurecloud.com/oauth/authorize?" + jQuery.param(queryStringData));
+        }
+    </script>
+</body>
+</html>

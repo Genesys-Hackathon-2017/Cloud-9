@@ -13,9 +13,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(__dirname));
 
-// Hardcoded variables
-var clientId = 'db2dfb7c-54d3-4fa0-9fc8-08d8f7b43eb2';
-var clientSecret = '9MAiRG1GxgSkERyWZwiKvJNh0Zr3nuX30Us0sWzwep0';
+var clientId = '12df5196-bdda-4fe0-8f75-dd1d6bdd8b67';
+var clientSecret = 'Pc1CO2DiBlTmI0Hom42yLI9kgQmNFSXzkvNNK1CNFKk';
+var redirectURI = 'http://localhost:3000/index.html';
 
 // For use of PureCloud's npm module
 const platformClient = require('purecloud-platform-client-v2');
@@ -32,18 +32,18 @@ platformClient.ApiClient.instance.authentications['PureCloud Auth'].accessToken 
 // Main of our Application
 app.get("/", function(req, res){
     // Authenticate
-    client.loginClientCredentialsGrant(clientId, clientSecret)
+    client.loginClientCredentialsGrant(clientId, redirectURI)
     .then(function(){
         // You're authenticated!
-        console.log("AUTHENTICATED!!!");
-        var opts = { 
-          'pageSize': 25, // Number | Page size
-          'pageNumber': 1, // Number | Page number
-          'id': ["id_example"], // [String] | id
-          'sortOrder': "ASC", // String | Ascending or descending sort order
-          'expand': ["expand_example"], // [String] | Which fields, if any, to expand
-          'state': "active" // String | Only list users of this state
-      };
+        console.log("Just got authenticated!\n\n");
+      //   var opts = {
+      //     'pageSize': 25, // Number | Page size
+      //     'pageNumber': 1, // Number | Page number
+      //     'id': ["id_example"], // [String] | id
+      //     'sortOrder': "ASC", // String | Ascending or descending sort order
+      //     'expand': ["expand_example"], // [String] | Which fields, if any, to expand
+      //     'state': "active" // String | Only list users of this state
+      // };
       usersApi.getUsersMe(opts)
       .then(function(data) {
         console.log(`getUsers success! data: ${JSON.stringify(data, null, 2)}`);
@@ -55,7 +55,7 @@ app.get("/", function(req, res){
   })
     .then(function(data) {
         // Handle successful result!
-        res.redirect("/my_info");
+        res.redirect("/home");
     })
     .catch(function(response) {
         // Handle failure response
@@ -64,8 +64,8 @@ app.get("/", function(req, res){
     });
 });
 
-app.get("/my_info", function(req, res){
-    res.redirect("/my_info.html");
+app.get("/home", function(req, res){
+    res.redirect("/home.html");
 });
 
 // Start server with our Express Middleware on port 8085
