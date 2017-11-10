@@ -52,6 +52,7 @@ Implement on platforms such as:
 
     1. Speech-to-text from IBM Watson
     2. Translate API (IBM Watson)
-    3. PureCloud Phone-call API (Start and stop a call)
+    3. PureCloud Phone-call API (Start and stop a call) => Mera
     4. UI Design - Website
     5. Find conversations that will be translated (ENGLISH -> FRENCH) -> MAMADOUGH?
+    
