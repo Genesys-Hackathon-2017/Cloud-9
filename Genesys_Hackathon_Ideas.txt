@@ -1,0 +1,57 @@
+1) An AI assistant, Max, that offers a solution to a common problem affecting all customer contact centres - wait times. When all agents are occupied, Max steps in and greets new customers connecting via phone or chat with the solution to their problem whether it be a simple return or something more complex. Max enables customers to receive timely support whilst reducing the traffic to customer contact centres.
+
+Selling Points:
+    - Reduces wait times (especially anxiety with having to stay on the phone for long periods of time)
+    - Increases overall customer satisfaction
+
+Features:
+    - Use keywords to recommend and forward them to specific department
+    - Customer side -> call in to make complaint (say issue) - it will parse that and direct it to wherever you need to go
+    - PureCloud can be applied to mostly retail businesses (most complaints)
+    - Add into an existing system without breaking features
+
+"Max - an AI assistant that helps those who aren't being helped"
+--------------------------------------------------------------------------------------------------------------------------
+MISC:
+    
+* An app to help pick out key words so that CSR wouldn't have to remember what was said long after the call (using IBM Watson's API)
+
+- Utilize ML (Tensorflow) to better predict what customers may require based on previous contact
+
+2) App to aggregate customer complaints (small businesses only) - Some companies respond slowly on Social Media when they hear complaints and/or don't address them at all => tarnishes their company reputation (helps maintain or establish an improved social media presence)
+    - Create an app for PureCloud that aggregates all complaints in one area to equally address them all
+    - Person to person point of contact when a customer calls in with a complaint
+    - Communicate between customers and businesses so it's not a "one-sided conversation" (Yelp for companies)
+    - Twitter API
+
+    hook up to twitter, write and read priv
+    identify bad tweets, 
+    use watson as the means of responding to users
+    Post to twitter, read tweet and responds in a timely manner
+
+    1. App monitors Twitter for negative tweets about the respective company
+    2. Pulls these tweets which are then fed to IBM Watson who replies on Twitter with a follow-up message. IBM Watson also creates a conversation with the CSR to alert them in case they want to personally follow-up
+
+Implement on platforms such as:
+    -> Computer
+    -> Telephone
+
+3) An app that serves like Yelp for companies since companies can't track down and help customers on every website
+    -> Companies has profile, customer puts complaint on twitter -> gives a way to reach out to these customers
+    -> Customers should be able to complain on whatever platform they're comfortable with
+
+    -> do companies want to show what they did to help solve the problem to others? DM but showing the issue was resolved
+
+4) Voice to text translation for PureCloud voice calls
+    -> Allows users from any different backgrounds and nationalities to speak to PureCloud and have their speech translated into a language known by both parties (ex: French to English)
+    -> Reduces the need for multilingual CSR's and region-specific call centres
+    -> Decongests call flow (less calls waiting on a specific agent that speaks multiple languages)
+
+    *-> Have to train Watson over-time with previously recorded conversations (increases accuracy and expose to different dialects within the same language)
+    *-> What if they're misinterpreted? (Refer to above)
+
+    1. Speech-to-text from IBM Watson
+    2. Translate API (IBM Watson)
+    3. PureCloud Phone-call API (Start and stop a call)
+    4. UI Design - Website
+    5. Find conversations that will be translated (ENGLISH -> FRENCH) -> MAMADOUGH?
