@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Home sweet home</title>
+    <!-- https://github.com/muaz-khan/WebRTC-Experiment/tree/master/RecordRTC -->
+    <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
     <!-- https://responsivevoice.org/api/ -->
     <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
     <!-- Bootstrap for CSS styling -->
@@ -65,7 +67,7 @@
             }
 
             setTimeout(responsiveVoice.speak(say, voice), 15000);
-        }
+        };
 
         function getUserInfo() {
             if(window.location.hash) {
@@ -74,7 +76,7 @@
                     type: "GET",
                     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + authToken);},
                     success: function(data) {
-                        console.log("The object returned was: " + data);
+                        console.log(data);
 
                         // Populate HTML elements dynamically
                         var userName = document.getElementById('name');
@@ -99,7 +101,6 @@
 
         // By calling the function above, we actively get the data from the API
         getUserInfo();
-
     </script>
 
 </head>
