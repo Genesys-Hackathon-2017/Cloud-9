@@ -8,12 +8,8 @@ var sessionMap = {};
 app.use(express.static(__dirname));
 
 // Main entry point of our app
-app.get("/", function(req, res){
-    res.redirect("/login.html");
-});
-
-app.get("/index", function(req, res){
-    res.redirect("/index.html");
+app.get("/demo", function(req, res){
+    res.redirect("/demo.html");
 });
 
 var httpServer = http.createServer(app);
