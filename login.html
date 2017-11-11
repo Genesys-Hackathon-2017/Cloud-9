@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PureCloud - Login</title>
+    <script
+    src="https://code.jquery.com/jquery-1.11.3.min.js"
+    integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        var queryStringData = {
+            response_type : "token",
+            client_id : "12df5196-bdda-4fe0-8f75-dd1d6bdd8b67",
+            redirect_uri : "http://localhost:3000/index.html"
+        }
+        window.location.replace("https://login.mypurecloud.com/oauth/authorize?" + jQuery.param(queryStringData));
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Translate extension",
+  "description": "This extension translates conversations for pure cloud agents.",
+  "version": "1.0",
+
+  "page_action": {
+    "default_icon": "images/icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}
