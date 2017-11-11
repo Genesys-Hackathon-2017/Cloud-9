@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Home sweet home</title>
+    <!-- https://responsivevoice.org/api/ -->
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+    <!-- Bootstrap for CSS styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script
     src="https://code.jquery.com/jquery-1.11.3.min.js"
     integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g="
@@ -25,7 +29,43 @@
             console.log("Could not find authToken");
         }
 
-        // console.log(window.location.hash);
+        function sayText(text, lang){
+            // var lang = window.navigator.languages ? window.navigator.languages[0] : null;
+            // lang = lang || window.navigator.language || window.navigator.browserLanguage || window.navigator.userLanguage;
+            // if (lang.indexOf('-') !== -1)
+            //     lang = lang.split('-')[0];
+            // if (lang.indexOf('_') !== -1)
+            //     lang = lang.split('_')[0];
+            console.log(lang);
+            if (text === ''){
+                text = 'What can I help you with?';
+            }
+            var voice = '';
+
+            // Simply to test the language
+            // lang = 'fr';
+
+            switch (lang) {
+                case 'en':
+                    say = text;
+                    voice = "UK English Female";
+                    break;
+                case 'es':
+                    say = text;
+                    voice = "Spanish Female";
+                    break;
+                case 'fr':
+                    say = text;
+                    voice = "French Female";
+                    break;
+                default:
+                    say = text;
+                    voice = "UK English Female";
+                    break;
+            }
+
+            setTimeout(responsiveVoice.speak(say, voice), 15000);
+        }
 
         function getUserInfo() {
             if(window.location.hash) {
@@ -34,7 +74,7 @@
                     type: "GET",
                     beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'bearer ' + authToken);},
                     success: function(data) {
-                        console.log(data);
+                        console.log("The object returned was: " + data);
 
                         // Populate HTML elements dynamically
                         var userName = document.getElementById('name');
@@ -59,6 +99,7 @@
 
         // By calling the function above, we actively get the data from the API
         getUserInfo();
+
     </script>
 
 </head>
@@ -69,5 +110,15 @@
         <p>Your state is: <span id="state"></span></p>
         <p>Your profile image is: <img id="image"></span></p>
     </div>
+
+    <input id="textInput" type="text" name="sayTextArgument">
+    <button onclick="sayText(document.getElementById('textInput').value, 'en')" type="button">Read in English</button>
+    <button onclick="sayText('Bonjour, je m\'appelle Sean', 'fr')" type="button">"Hi, my name is Sean" in French</button>
 </body>
+
+<!-- Bootstrap's Javascript documents -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 </html>
