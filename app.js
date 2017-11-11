@@ -9,7 +9,7 @@ app.use(express.static(__dirname));
 
 // Main entry point of our app
 app.get("/demo", function(req, res){
-    res.redirect("/demo.html");
+    res.redirect("/dem.html");
 });
 
 var httpServer = http.createServer(app);

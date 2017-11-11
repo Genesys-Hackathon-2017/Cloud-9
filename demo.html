@@ -7,7 +7,7 @@
     <meta name="author" content="Alvarez.is - BlackTie.co">
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-    <title>Threads</title>
+    <title>Cloud 9</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -17,16 +17,17 @@
     
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/smoothscroll.js"></script>
     
   </head>
 
-  <body data-spy="scroll" data-offset="0" data-target="#navigation">
+  <!-- <body data-spy="scroll" data-offset="0" data-target="#navigation"> -->
 
     <!-- Fixed navbar -->
-	    <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+	   <!--  <div id="navigation" class="navbar navbar-default navbar-fixed-top">
 	      <div class="container">
 	        <div class="navbar-header">
 	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -34,7 +35,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#"><b>Threads</b></a>
+	          <a class="navbar-brand" href="#"><b>Cloud 9</b></a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
@@ -43,24 +44,22 @@
 	            <li><a href="#showcase" class="smothScroll">Showcase</a></li>
 	            <li><a href="#contact" class="smothScroll">Contact</a></li>
 	          </ul>
-	        </div><!--/.nav-collapse -->
+	        </div>
 	      </div>
-	    </div>
-
-
+	    </div> -->
+<body>
 	<section id="home" name="home"></section>
 	<div id="headerwrap">
 	    <div class="container">
 	    	<div class="row centered">
 	    		<div class="col-lg-12">
-					<h1>Welcome To <b>Threads</b></h1>
-					<h3>Show your product with this handsome theme.</h3>
+					<h1><i class="fa fa-cloud" aria-hidden="true"></i> <b>Cloud 9</b> <i class="fa fa-cloud" aria-hidden="true"></i></h1>
+					<h3><em>Truly understanding the customer</em></h3>
 					<br>
 	    		</div>
-	    		
 	    		<div class="col-lg-2">
-	    			<h5>Amazing Results</h5>
-	    			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+	    			<h5 id="larger">Any language, any agent.</h5>
+	    			<p id="larger">Enables an agent to serve any customer.</p>
 	    			<img class="hidden-xs hidden-sm hidden-md" src="assets/img/arrow1.png">
 	    		</div>
 	    		<div class="col-lg-8">
@@ -69,8 +68,8 @@
 	    		<div class="col-lg-2">
 	    			<br>
 	    			<img class="hidden-xs hidden-sm hidden-md" src="assets/img/arrow2.png">
-	    			<h5>Awesome Design</h5>
-	    			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+	    			<h5 id="larger">Focus on the experience, not the interaction.</h5>
+	    			<p id="larger">Deliver a customer experience like no other.</p>
 	    		</div>
 	    	</div>
 	    </div> <!--/ .container -->
@@ -82,23 +81,23 @@
 	<div id="intro">
 		<div class="container">
 			<div class="row centered">
-				<h1>Designed To Excel</h1>
+				<h1 id="largerTitle"><i class="fa fa-cogs" aria-hidden="true"></i> Behind the Scenes <i class="fa fa-cogs" aria-hidden="true"></i></h1>
 				<br>
 				<br>
 				<div class="col-lg-4">
-					<img src="assets/img/intro01.png" alt="">
-					<h3>Community</h3>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+					<img src="assets/img/purecloud.png" alt="">
+					<h2>PureCloud</h2>
+					<p id="largerSubtitle">Real-time chat to enable Cloud 9</p>
 				</div>
 				<div class="col-lg-4">
-					<img src="assets/img/intro02.png" alt="">
-					<h3>Schedule</h3>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+					<img src="assets/img/ibm-watson.png" alt="">
+					<h2>IBM Watson</h2>
+					<p id="largerSubtitle">Machine Learning technology that provides increasingly accurate translations</p>
 				</div>
 				<div class="col-lg-4">
-					<img src="assets/img/intro03.png" alt="">
-					<h3>Monitoring</h3>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+					<img src="assets/img/tech-stack.png" alt="">
+					<h2>Technologies</h2>
+					<p id="largerSubtitle">The tech stack used to bring Cloud 9 to life</p>
 				</div>
 			</div>
 			<br>
@@ -110,7 +109,7 @@
 	<div id="features">
 		<div class="container">
 			<div class="row">
-				<h1 class="centered">What's New?</h1>
+				<h1 id="largerTitle" class="centered"><i class="fa fa-retweet" aria-hidden="true"></i> Recap <i class="fa fa-retweet" aria-hidden="true"></i></h1>
 				<br>
 				<br>
 				<div class="col-lg-6 centered">
@@ -118,19 +117,19 @@
 				</div>
 				
 				<div class="col-lg-6">
-					<h3>Some Features</h3>
-					<br>
+<!-- 					<h3>Some Features</h3>
+					<br> -->
 				<!-- ACCORDION -->
 		            <div class="accordion ac" id="accordion2">
 		                <div class="accordion-group">
 		                    <div class="accordion-heading">
 		                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-		                        First Class Design
+		                        <span id="largerBold">Many languages. One Agent.</span>
 		                        </a>
 		                    </div><!-- /accordion-heading -->
 		                    <div id="collapseOne" class="accordion-body collapse in">
 		                        <div class="accordion-inner">
-								<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								<p id="largerSubtitle"><br />Gone is the age of language-specific agents. Enable all of your workforce to achieve their full potential with Cloud 9.</p>
 								</div><!-- /accordion-inner -->
 		                    </div><!-- /collapse -->
 		                </div><!-- /accordion-group -->
@@ -139,12 +138,12 @@
 		                <div class="accordion-group">
 		                    <div class="accordion-heading">
 		                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-		                        Retina Ready Theme
+		                        <span id="largerBold">Shorter Wait Times. Happier Customers.</span>
 		                        </a>
 		                    </div>
 		                    <div id="collapseTwo" class="accordion-body collapse">
 		                        <div class="accordion-inner">
-								<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								<p id="largerSubtitle"><br />Resolve customer issues faster and more consistently, regardless of what language they speak.</p>
 								</div><!-- /accordion-inner -->
 		                    </div><!-- /collapse -->
 		                </div><!-- /accordion-group -->
@@ -153,12 +152,12 @@
 		                 <div class="accordion-group">
 		                    <div class="accordion-heading">
 		                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-		                        Awesome Support
+		                        <span id="largerBold">One voice. One pay.</span>
 		                        </a>
 		                    </div>
 		                    <div id="collapseThree" class="accordion-body collapse">
 		                        <div class="accordion-inner">
-								<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								<p id="largerSubtitle"> don't need to pay morem oney to others</p>
 								</div><!-- /accordion-inner -->
 		                    </div><!-- /collapse -->
 		                </div><!-- /accordion-group -->
@@ -167,12 +166,12 @@
 		                 <div class="accordion-group">
 		                    <div class="accordion-heading">
 		                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-		                        Responsive Design
+		                        <span id="largerBold">Expand your customer base</span>
 		                        </a>
 		                    </div>
 		                    <div id="collapseFour" class="accordion-body collapse">
 		                        <div class="accordion-inner">
-								<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								<p id="largerSubtitle">Accomodate more customers</p>
 								</div><!-- /accordion-inner -->
 		                    </div><!-- /collapse -->
 		                </div><!-- /accordion-group -->
@@ -188,7 +187,7 @@
 	<div id="showcase">
 		<div class="container">
 			<div class="row">
-				<h1 class="centered">Some Screenshots</h1>
+				<h1 class="centered">What are you waiting for?</h1>
 				<br>
 				<div class="col-lg-8 col-lg-offset-2">
 					<div id="carousel-example-generic" class="carousel slide">
@@ -214,51 +213,7 @@
 			<br>
 			<br>	
 		</div><!-- /container -->
-	</div>	
-
-
-	<section id="contact" name="contact"></section>
-	<div id="footerwrap">
-		<div class="container">
-			<div class="col-lg-5">
-				<h3>Address</h3>
-				<p>
-				Av. Greenville 987,<br/>
-				New York,<br/>
-				90873<br/>
-				United States
-				</p>
-			</div>
-			
-			<div class="col-lg-7">
-				<h3>Drop Us A Line</h3>
-				<br>
-				<form role="form" action="#" method="post" enctype="plain"> 
-				  <div class="form-group">
-				    <label for="name1">Your Name</label>
-				    <input type="name" name="Name" class="form-control" id="name1" placeholder="Your Name">
-				  </div>
-				  <div class="form-group">
-				    <label for="email1">Email address</label>
-				    <input type="email" name="Mail" class="form-control" id="email1" placeholder="Enter email">
-				  </div>
-				  <div class="form-group">
-				  	<label>Your Text</label>
-				  	<textarea class="form-control" name="Message" rows="3"></textarea>
-				  </div>
-				  <br>
-				  <button type="submit" class="btn btn-large btn-success">SUBMIT</button>
-				</form>
-			</div>
-		</div>
 	</div>
-	<div id="c">
-		<div class="container">
-			<p>Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a></p>
-		
-		</div>
-	</div>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

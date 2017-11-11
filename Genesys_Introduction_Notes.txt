@@ -1,0 +1,47 @@
+Largest provider of Customer experience and contact centre solutions
+
+Customers: OVUM, Nike, Emitrates, Marks & Spencer, Gartner
+
+top 50 software cokmpany with 15 years of cloud experience
+100m+ consumer interactions per day
+5000 globlal employees
+4700 customers in 120 countreies
+
+
+cloud customers: facebook, target, redhat, macys, best buy, bell, nike, td, cgi, marketo,
+
+3 portfolio fferings: purecloud, pureconnect, pureengage
+purecloud -> all in one customer engagement and emplyoee collaboration offering that's intuitive, easy to use, and deploys rapidly
+All in one multichannel engagement offering that is simple to administre for mid-large orgs
+
+
+xander dumaine
+team lead, sr. software engineer
+raleigh/durham area
+xander.dumain@genesys.com
+
+
+a lot of people hate having to call a company -> long process (huge pain to go through); better expeirnece -> give tool to customers so that they enable them to make it better (communication is how everyone builds relationships)
+
+physical phones -> cost a lot. Purecloud does everything virtually
+
+Building automations ontop of purecloud to agument that process. Integrate information into. Anything you can do  to make tht process better
+
+Kevin Glinski
+
+Dev (Consersations - making/receiving calls)
+    - am I available for a call? At lunch?
+    - 
+
+    *Notifications via websocket (presence etc)
+
+    *Dev Tools - API Explorer
+
+Justin Ray
+Sr. Software Engineer
+
+* Want to see it built into PureCloud
+
+*USE PUBLIC HOSTING (AWS HOSTING)
+
+Send emails to agents -> translations
