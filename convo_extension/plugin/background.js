@@ -63,7 +63,7 @@ if (window.parent === window) {
     }, 1000);
 
     function translate_messsage () {
-        var translation;
+        var translation = null;
         var input = POC.$('.interactions .active-conversation .message-input').val();
         var jsonInput = {
             message: input
@@ -73,15 +73,16 @@ if (window.parent === window) {
                 type: "POST",
                 //url: "http://localhost:4000/test",
                 data: jsonInput,
+                contentType: "application/json",
                 //success: console.log("SEAN")
             }).then((response) => {
                 translation = response;
-                console.log(input);
+                // console.log("Received translation in background.js was: " + translation);
+                console.log(translation);
+                POC.$('.interactions .active-conversation .message-input').val(translation);
             });
 
-
-        console.log(input);
-        POC.$('.interactions .active-conversation .message-input').val(translation);
+        
     };
 
 }
