@@ -72,7 +72,7 @@ if (window.parent === window) {
         jQuery.ajax("http://localhost:3000/readMsg", {
                 type: "POST",
                 //url: "http://localhost:4000/test",
-                data: jsonInput,
+                data: JSON.stringify(jsonInput),
                 contentType: "application/json",
                 //success: console.log("SEAN")
             }).then((response) => {

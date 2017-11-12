@@ -8,7 +8,7 @@ var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v
 var app = express();
 var sessionMap = {};
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded ({ extended: true}));
+//app.use(bodyParser.urlencoded ({ extended: true}));
 app.use(express.static(__dirname));
 
 var language_translator = new LanguageTranslatorV2({
@@ -19,24 +19,35 @@ var language_translator = new LanguageTranslatorV2({
 
 function testFunction(input) {
   var translation;
-  language_translator.translate({
+  return new Promise(function (resolve, reject) {
+    language_translator.translate({
     text: input, source : 'en', target: 'fr' },
     function (err, result) {
-      if (err)
+      if (err) {
+        reject(err);
         console.log('error:', err);
-      else
+      } else {
         translation = result.translations[0].translation;
         console.log(translation);
           // Scope issue
-        return translation;
+        resolve(translation);
+      }
     });
+  })
+  
 }
 
 //var prompt = require('prompt-sync')();
 
-app.post("/readMsg", function(req, res){
-  var result = testFunction(req.body.message);
-  res.send(result);
+app.post("/readMsg", function(req, res) {
+  testFunction(req.body.message)
+    .then(function (result) {
+      console.log('sending result', result)
+      res.json(result);
+    })
+    .catch(function (err) {
+      console.log("Error occured in /readMsg:" + err);
+    })
 });
 
 var httpServer = http.createServer(app);
