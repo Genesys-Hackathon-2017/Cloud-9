@@ -12,7 +12,7 @@
   "background": {"page":"background.html"},
   "content_scripts": [
     {
-	  "matches": ["*://*/*"],
+	  "matches": ["https://apps.mypurecloud.com/*"],
 	  "js": ["jquery-1.6.1.min.js", "background.js"],
 	  "all_frames": true
 	}
