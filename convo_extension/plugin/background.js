@@ -11,6 +11,7 @@ setInterval(function(){
 
     //get interaction customer name & match it to user
     var customer = [];
+    var user = "";
     POC.$.each(POC.$('.interaction-customer-name'), function(){
         customer.push(POC.$(this).text());
         //console.log("HACKATHON", customer);
@@ -23,18 +24,16 @@ setInterval(function(){
         let conversation = [];
         POC.$(this).find('.chat-message').each(function(){
             let message = {};
-            var user = POC.$(this).find('.user-name').text()
+            if(POC.$(this).find('.user-name').text().localeCompare("") != 0) {
+                user = POC.$(this).find('.user-name').text()
+            }
+            //if user is "" then is the same user as the previous message
+            
             var match = false;
 
-            /*for (person in customer){
-                console.log("customer loop", person);
-                if (user.includes(person)) {
-                    match = true;
-                    break;
-                }
-            };*/
             customer.forEach(function(person) {
-                 console.log("customer loop", person);
+
+                // console.log("customer loop", person);
                 if (user.includes(person)) {
                     match = true;
                 }
