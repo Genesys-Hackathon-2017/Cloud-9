@@ -56,11 +56,12 @@ function testFunction2(input) {
 }
 
 app.post("/readMsg", function(req, res) {
+  translationtext = req.body.message;
+  console.log(req.body.lang);
   if (req.body.lang == "fr") {
     testFunction2(req.body.message)
     .then(function (result) {
       console.log('sending result from testFunct2: ', result)
-      translationtext = result;
       res.json(result);
     })
     .catch(function (err) {

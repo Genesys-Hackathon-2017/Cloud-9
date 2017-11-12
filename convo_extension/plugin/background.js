@@ -23,7 +23,8 @@ if (window.parent === window) {
             lastProcessed = lastMsg; 
 
             var jsonObj = {
-                message: lastProcessed
+                message: lastProcessed,
+                lang: "fr"
             };
 
             // var JSONStringed = JSON.stringify(jsonObj);
@@ -41,7 +42,8 @@ if (window.parent === window) {
             jQuery.ajax("http://localhost:3000/readMsg", {
                 type: "POST",
                 //url: "http://localhost:4000/test",
-                data: jsonObj,
+                data: JSON.stringify(jsonObj),
+                contentType: "application/json",
                 //success: console.log("SEAN")
             }).then(() => {
                 console.log('Msg sent to Node server!');
@@ -66,7 +68,8 @@ if (window.parent === window) {
         var translation = null;
         var input = POC.$('.interactions .active-conversation .message-input').val();
         var jsonInput = {
-            message: input
+            message: input,
+            lang: "en"
         };
 
         jQuery.ajax("http://localhost:3000/readMsg", {
