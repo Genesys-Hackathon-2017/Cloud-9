@@ -1,0 +1,17 @@
+task :default do
+    if !Dir.exists?( "bin")
+        Dir.mkdir "bin"
+    end
+
+    if File.exists?( "plugin.pem")
+        FileUtils.rm "plugin.pem"
+    end
+
+    if File.exists?( "bin/chrome_proof_of_concept.crx")
+        FileUtils.rm "bin/chrome_proof_of_concept.crx"
+    end
+
+    sh '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --pack-extension=plugin '
+    FileUtils.mv "plugin.crx", "bin/chrome_proof_of_concept.crx"
+
+end

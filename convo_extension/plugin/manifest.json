@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Hackathon chat helper demo",
+  "version": "1.3",
+  "description": "DEMO DEMO DEMO",
+
+  "icons": {  "16": "resources/logo16rgba.png",
+			  "48": "resources/logo48rgba.png",
+			 "128": "resources/logo128rgba.png" },
+
+  "minimum_chrome_version": "10",
+  "background": {"page":"background.html"},
+  "content_scripts": [
+    {
+	  "matches": ["https://apps.mypurecloud.com/*"],
+	  "js": ["jquery-1.6.1.min.js", "background.js"],
+	  "all_frames": true
+	}
+  ],
+
+  "permissions": [
+    "tabs",
+	"*://*/*"
+  ]
+}
