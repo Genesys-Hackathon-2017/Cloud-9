@@ -4,7 +4,7 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
-
+var translationtext;
 var app = express();
 var sessionMap = {};
 app.use(bodyParser.json());
@@ -43,6 +43,7 @@ app.post("/readMsg", function(req, res) {
   testFunction(req.body.message)
     .then(function (result) {
       console.log('sending result', result)
+      translationtext = result;
       res.json(result);
     })
     .catch(function (err) {
@@ -50,6 +51,8 @@ app.post("/readMsg", function(req, res) {
     })
 });
 
-
+app.get("/readMsg", function(req,res) {
+  res.json(translationtext);
+});
 var httpServer = http.createServer(app);
 httpServer.listen('3000');

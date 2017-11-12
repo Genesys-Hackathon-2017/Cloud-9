@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script
+  src="https://code.jquery.com/jquery-1.11.3.min.js"
+  integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g="
+  crossorigin="anonymous"></script>  
 
   <script type="application/javascript">
-
     var msgindex = 0;
 
     function addmsg(user, msg) {
       var chat = document.getElementById("meratest");
       var currentdate = new Date(); 
       var datetime = currentdate.getHours() + ":" + currentdate.getMinutes() + ":"+ currentdate.getSeconds();
+      
 
       var link = document.createElement("a");
       link.id = msgindex;
@@ -40,11 +44,25 @@
       }
       msgindex = msgindex + 1;
     };
+    var oldRes = null;
+    var count = 1;
+    setInterval( function() {
 
-    $.get("http://localhost:3000/readMsg", function(user, msg) {
-      alert("HELLO THIS IS THE VALUES " + user + msg);
+      $.get("http://localhost:3000/readMsg", function(res, stats) {
+      if(res != null && res !== oldRes){
+        if (count == 1) {
+         addmsg("customer", res);
+          oldRes = res;
+          count = 2;
+        } else {
+          addmsg("agent", res);
+          oldRes = res;
+          count = 1;
+        }
+      }
     })
-
+  }, 5000);
+    
   </script>
 
 </head>
@@ -52,10 +70,10 @@
   <form action="http://localhost:3000/readMsg" method="GET">
     <div class="list-group" id="meratest">
 
-    <script type="text/javascript">addmsg("Stephen Strange", "testING");
-        addmsg("Vmail", "but whatever");
-        addmsg("Mera", "im da best");
-  </script>
+      <script type="text/javascript">addmsg("Stephen Strange", "testING");
+      addmsg("Vmail", "but whatever");
+      addmsg("Mera", "im da best");
+    </script>
   </div>
 </form>
 </body>
