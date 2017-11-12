@@ -3,7 +3,9 @@ var http = require("http");
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
+var request=require('request');
 var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
+
 
 var app = express();
 var sessionMap = {};
@@ -18,20 +20,20 @@ var language_translator = new LanguageTranslatorV2({
 });
 
 function testFunction(input) {
-language_translator.translate({
-  text: input, source : 'en', target: 'fr' },
-  function (err, result) {
-    if (err)
-      console.log('error:', err);
-    else
-      console.log(result.translations[0].translation);
-});
+  var returnVal = null;
+
+  language_translator.translate({
+    text: input, source : 'en', target: 'fr' },
+    function (err, result) {
+      if (err)
+        console.log('error:', err);
+      else
+        console.log(result.translations[0].translation);
+    });
 }
 
-//var prompt = require('prompt-sync')();
-
 app.post("/readMsg", function(req, res){
-    testFunction(req.body.message);
+  testFunction(req.body.message);
 });
 
 var httpServer = http.createServer(app);
