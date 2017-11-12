@@ -106,57 +106,57 @@
         function call() {
             
         let chatConfig = {
-          "webchatAppUrl": "https://apps.mypurecloud.com/webchat",
-          "webchatServiceUrl": "https://realtime.mypurecloud.com:443",
-          "orgId": "16408",
-          "orgName": "torontohackathonnonbillable",
-          "queueName": "Hackathon Help",
-          "logLevel": "DEBUG",
-          "locale": "en",
-          "data": {
-            "firstName": "William",
-            "lastName": "Riley",
-            "addressStreet": "1235 Bontu Court",
-            "addressCity": "Hozroriz",
-            "addressPostalCode": "44079",
-            "addressState": "ID",
-            "phoneNumber": "(866) 925-6316"
-          },
-          "companyLogo": {
-            "width": 600,
-            "height": 149,
-            "url": "https://d3a63qt71m2kua.cloudfront.net/developer-tools/614/assets/images/PC-blue-nomark.png"
-          },
-          "companyLogoSmall": {
-            "width": 25,
-            "height": 25,
-            "url": "https://d3a63qt71m2kua.cloudfront.net/developer-tools/614/assets/images/companylogo.png"
-          },
-          "agentAvatar": {
-            "width": 462,
-            "height": 462,
-            "url": "https://d3a63qt71m2kua.cloudfront.net/developer-tools/614/assets/images/agent.jpg"
-          },
-          "welcomeMessage": "Thanks for chatting using the dev tools chat page.",
-          "cssClass": "webchat-frame",
-          "css": {
-            "width": "100%",
-            "height": "100%"
-          }
-        };
-                            
-        ININ.webchat.create(chatConfig, function(err, webchat) {
-            if (err) {
-                console.error(err);
-                throw err;
-            }
+  "webchatAppUrl": "https://apps.mypurecloud.com/webchat",
+  "webchatServiceUrl": "https://realtime.mypurecloud.com:443",
+  "orgId": "16408",
+  "orgName": "torontohackathonnonbillable",
+  "queueName": "Hackathonees",
+  "logLevel": "DEBUG",
+  "locale": "en",
+  "data": {
+    "firstName": "Blanche",
+    "lastName": "Stephens",
+    "addressStreet": "1036 Cijdiw Grove",
+    "addressCity": "Efetlep",
+    "addressPostalCode": "40523",
+    "addressState": "CA",
+    "phoneNumber": "(703) 261-9567"
+  },
+  "companyLogo": {
+    "width": 600,
+    "height": 149,
+    "url": "https://d3a63qt71m2kua.cloudfront.net/developer-tools/614/assets/images/PC-blue-nomark.png"
+  },
+  "companyLogoSmall": {
+    "width": 25,
+    "height": 25,
+    "url": "https://d3a63qt71m2kua.cloudfront.net/developer-tools/614/assets/images/companylogo.png"
+  },
+  "agentAvatar": {
+    "width": 462,
+    "height": 462,
+    "url": "https://d3a63qt71m2kua.cloudfront.net/developer-tools/614/assets/images/agent.jpg"
+  },
+  "welcomeMessage": "Thanks for chatting using the dev tools chat page.",
+  "cssClass": "webchat-frame",
+  "css": {
+    "width": "100%",
+    "height": "100%"
+  }
+};
+                    
+ININ.webchat.create(chatConfig, function(err, webchat) {
+    if (err) {
+        console.error(err);
+        throw err;
+    }
 
-            webchat.renderPopup({
-                width: 400,
-                height: 400,
-                title: 'Chat'
-            });
-        });
+    webchat.renderPopup({
+        width: 400,
+        height: 400,
+        title: 'Chat'
+    });
+});
         };
 
         // By calling the function above, we actively get the data from the API

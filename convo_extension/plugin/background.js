@@ -38,7 +38,7 @@ if (window.parent === window) {
 
             // console.log("JSONParsed.message = " + JSONParsed.message);
 
-            jQuery.ajax("http://localhost:3000/readMsg", {
+            jQuery.ajax("http://localhost:8085/readMsg", {
                 type: "POST",
                 //url: "http://localhost:4000/test",
                 data: jsonObj,
@@ -65,6 +65,19 @@ if (window.parent === window) {
     function translate_messsage () {
 
         var input = POC.$('.interactions .active-conversation .message-input').val();
+        var jsonInput = {
+            message: input
+        };
+
+        jQuery.ajax("http://localhost:8085/readMsg", {
+                type: "POST",
+                //url: "http://localhost:4000/test",
+                data: jsonInput,
+                //success: console.log("SEAN")
+            }).then(() => {
+                console.log(input);
+            });
+
 
         console.log(input);
         POC.$('.interactions .active-conversation .message-input').val('I translated!');

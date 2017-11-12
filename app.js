@@ -70,4 +70,4 @@ app.get("/my_info", function(req, res){
 
 // Start server with our Express Middleware on port 8085
 var httpServer = http.createServer(app);
-httpServer.listen('8085');
+httpServer.listen('3000');
