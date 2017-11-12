@@ -19,7 +19,7 @@ setInterval(function(){
 
     
     POC.$.each(POC.$('.active-conversation'), function( index, value ) { //selecting all active convos
-        console.log("Active Convo found");
+        //console.log("Active Convo found");
         let conversation = [];
         POC.$(this).find('.chat-message').each(function(){
             let message = {};
@@ -34,27 +34,35 @@ setInterval(function(){
                 }
             };*/
             customer.forEach(function(person) {
-                 console.log("customer loop", person);
+                 //console.log("customer loop", person);
                 if (user.includes(person)) {
                     match = true;
                 }
             });
 
             if(match == true){ // convo is with a customer
-                console.log("HACKATHON - FOUND CONVERSATION");
+                //console.log("HACKATHON - FOUND CONVERSATION");
 
                 message.user = user;
                 message.text = [];
 
                 POC.$(this).find('.message-container ').each(function(){
                     message.text.push(POC.$(this).text());
+                    jQuery.ajax("http://localhost:4000/readMsg", {
+                        type: "POST"
+                        //url: "http://localhost:4000/test",
+                        data: 'Hello World',
+                        //success: console.log("SEAN")
+                    }).then(() => {
+                        console.log('Msg sent to Node server!');
+                    })
                 });
 
                 conversation.push(message);
             }
         });
 
-        console.log("HACKATHON", conversation);
+        //console.log("HACKATHON", conversation);
 
     });
 }, 1000);
