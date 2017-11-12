@@ -4,7 +4,7 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
-
+var translationtext;
 var app = express();
 var sessionMap = {};
 app.use(bodyParser.json());
@@ -34,21 +34,54 @@ function testFunction(input) {
       }
     });
   })
-  
 }
 
-//var prompt = require('prompt-sync')();
+function testFunction2(input) {
+  var translation;
+  return new Promise(function (resolve, reject) {
+    language_translator.translate({
+    text: input, source : 'fr', target: 'en' },
+    function (err, result) {
+      if (err) {
+        reject(err);
+        console.log('error:', err);
+      } else {
+        translation = result.translations[0].translation;
+        console.log(translation);
+          // Scope issue
+        resolve(translation);
+      }
+    });
+  })
+}
 
 app.post("/readMsg", function(req, res) {
-  testFunction(req.body.message)
+  if (req.body.lang == "fr") {
+    testFunction2(req.body.message)
     .then(function (result) {
-      console.log('sending result', result)
+      console.log('sending result from testFunct2: ', result)
+      translationtext = result;
       res.json(result);
     })
     .catch(function (err) {
       console.log("Error occured in /readMsg:" + err);
     })
+  } else {
+    testFunction(req.body.message)
+    .then(function (result) {
+      console.log('sending result from testFunct: ', result)
+      //translationtext = result;
+      res.json(result);
+    })
+    .catch(function (err) {
+      console.log("Error occured in /readMsg:" + err);
+    })
+  }
+  
 });
 
+app.get("/readMsg", function(req,res) {
+  res.json(translationtext);
+});
 var httpServer = http.createServer(app);
 httpServer.listen('3000');
