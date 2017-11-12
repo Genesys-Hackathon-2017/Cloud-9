@@ -6,7 +6,8 @@ var bodyParser = require('body-parser');
 
 var app = express();
 var sessionMap = {};
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded ({ extended: true}));
 app.use(express.static(__dirname));
 
 //var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
@@ -14,7 +15,7 @@ app.use(express.static(__dirname));
 //var prompt = require('prompt-sync')();
 
 app.post("/readMsg", function(req, res){
-    console.log("Hello");
+    console.log(req.body);
 });
 
 var httpServer = http.createServer(app);

@@ -48,21 +48,41 @@ setInterval(function(){
 
                 POC.$(this).find('.message-container ').each(function(){
                     message.text.push(POC.$(this).text());
-                    jQuery.ajax("http://localhost:4000/readMsg", {
-                        type: "POST"
-                        //url: "http://localhost:4000/test",
-                        data: 'Hello World',
-                        //success: console.log("SEAN")
-                    }).then(() => {
-                        console.log('Msg sent to Node server!');
-                    })
+
+                    // var a = "";
+                    // a = message.text;
+                    // a = a.replace(/(\r\n|\n|\r)/gm,"");
+
+                    //var a = "";
+                    a = message.text;
+                    //a = a.replace(/(\r\n|\n|\r)/gm,"");
+
+                    // console.log("Message = " + a);
+                    console.log(a);
+
+                    // var tempMessage = {
+                    //     user: "Sean",
+                    //     message: "Hello Vimal"
+                    // }
+
+                    // var jsonObj = {
+                    //     user: tempMessage.user,
+                    //     message: tempMessage.message  
+                    // };
+
+                    // jQuery.ajax("http://localhost:4000/readMsg", {
+                    //     type: "POST",
+                    //     //url: "http://localhost:4000/test",
+                    //     data: JSON.stringify(jsonObj),
+                    //     //success: console.log("SEAN")
+                    // }).then(() => {
+                    //     console.log('Msg sent to Node server!');
+                    // })
                 });
 
                 conversation.push(message);
             }
         });
-
         //console.log("HACKATHON", conversation);
-
     });
-}, 1000);
+}, 5000);
