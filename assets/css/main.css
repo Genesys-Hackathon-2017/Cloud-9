@@ -159,6 +159,10 @@ a:after {
 	color: white
 }
 
+#bold {
+    font-weight: bold;
+}
+
 #larger {
     font-size: 25px;
 }
@@ -168,10 +172,10 @@ a:after {
 }
 
 #largerSubtitle {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 #largerBold {
-    font-size: 25px;
+    font-size: 28px;
     font-weight: bold;
 }
