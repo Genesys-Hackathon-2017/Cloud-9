@@ -67,19 +67,18 @@ if (window.parent === window) {
         if(POC.$('.interactions .active-conversation .text-input-group').length == 1 ){
             
             POC.$('.interactions .active-conversation .text-input-group').append("<button type='button' id='translate' >Translate</button>");
-            POC.$('#translate')[0].addEventListener('click', function (){ console.log("hi");});
+            POC.$('#translate')[0].addEventListener('click', function (){ translate_messsage();});
             clearInterval(it);
             //POC.$('.interactions .active-conversation .message-input').append("<script>POC.$('.interactions .active-conversation .message-input').val('hello');</script>");
         }
     }, 1000);
-}
 
-
-
-/(function () {
+function translate_messsage () {
 
      var input = POC.$('.interactions .active-conversation .message-input').val();
 
      console.log(input);
     POC.$('.interactions .active-conversation .message-input').val('I translated!');
-});*/
+};
+
+}
