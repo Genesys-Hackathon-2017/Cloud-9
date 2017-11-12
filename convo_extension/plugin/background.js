@@ -7,58 +7,47 @@ POC.$ = jQuery.noConflict();
 if (window.parent === window) {
     console.log("HACKATHON - running poc, modify dom from here")
 
+    var lastProcessed = "";
+
     setInterval(function(){
 
-        //get interaction customer name & match it to user
-        var customer = [];
-        var user = "";
-        POC.$.each(POC.$('.interaction-customer-name'), function(){
-            customer.push(POC.$(this).text());
-            //console.log("HACKATHON", customer);
+        // Track last variable and current one
+        // If it's different, it implies it's a new message so send it to our node server
+        // var user = POC.$('.interaction-container .active-conversation .chat-message').last().find('.user-name .truncated-name').text().trim();
 
-        });
+        var lastMsg = POC.$('.interaction-container .active-conversation .chat-message .message-container').last().find('p').text().trim();
 
-        
-        POC.$.each(POC.$('.active-conversation'), function( index, value ) { //selecting all active convos
-            console.log("Active Convo found");
-            let conversation = [];
-            POC.$(this).find('.chat-message').each(function(){
-                let message = {};
-                if(POC.$(this).find('.user-name').text().localeCompare("") != 0) {
-                    user = POC.$(this).find('.user-name').text()
-                }
-                //if user is "" then is the same user as the previous message
-                
-                var match = false;
+        if (lastProcessed != lastMsg) {
+            // New message received
 
-                customer.forEach(function(person) {
+            lastProcessed = lastMsg; 
 
-                    // console.log("customer loop", person);
-                    if (user.includes(person)) {
-                        match = true;
-                    }
-                });
+            var jsonObj = {
+                message: lastProcessed
+            };
 
-                if(match == true){ // convo is with a customer
-                    console.log("HACKATHON - FOUND CONVERSATION");
+            // var JSONStringed = JSON.stringify(jsonObj);
 
-                    message.user = user;
-                    message.text = [];
+            // console.log("JSONStringed = " + JSONStringed);
 
-                    POC.$(this).find('.message-container ').each(function(){
-                        message.text.push(POC.$(this).text());
-                    });
+            // // console.log("JSONStringed = " + JSONStringed['message']);
 
-                    conversation.push(message);
-                }
+            // var JSONParsed = JSON.parse(JSONStringed);
+
+            // console.log("JSONParsed = " + JSONParsed);
+
+            // console.log("JSONParsed.message = " + JSONParsed.message);
+
+            jQuery.ajax("http://localhost:3000/readMsg", {
+                type: "POST",
+                //url: "http://localhost:4000/test",
+                data: jsonObj,
+                //success: console.log("SEAN")
+            }).then(() => {
+                console.log('Msg sent to Node server!');
             });
-
-            console.log("HACKATHON", conversation);
-
-
-        }); 
-
-    }, 1000); 
+        }
+    }, 5000);
 
 
 
@@ -73,12 +62,12 @@ if (window.parent === window) {
         }
     }, 1000);
 
-function translate_messsage () {
+    function translate_messsage () {
 
-     var input = POC.$('.interactions .active-conversation .message-input').val();
+        var input = POC.$('.interactions .active-conversation .message-input').val();
 
-     console.log(input);
-    POC.$('.interactions .active-conversation .message-input').val('I translated!');
-};
+        console.log(input);
+        POC.$('.interactions .active-conversation .message-input').val('I translated!');
+    };
 
 }
