@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  <script type="application/javascript">
+
+    var msgindex = 0;
+
+    function addmsg(user, msg) {
+      var chat = document.getElementById("meratest");
+      var currentdate = new Date(); 
+      var datetime = currentdate.getHours() + ":" + currentdate.getMinutes() + ":"+ currentdate.getSeconds();
+
+      var link = document.createElement("a");
+      link.id = msgindex;
+      link.href='#1';
+      link.className='list-group-item list-group-item-action flex-column align-items-start active';
+      
+      var div2 = document.createElement("div");
+      div2.className = 'd-flex w-100 justify-content-between';
+      var h5 = document.createElement("h5");
+      h5.className = 'mb-1';
+      h5.innerHTML = user;
+      var small = document.createElement("small");
+      small.innerHTML = datetime;
+      var paragraph = document.createElement("p");
+      paragraph.className = 'mb-1';
+      paragraph.innerHTML = msg;
+
+      chat.appendChild(link);
+      link.appendChild(div2);
+      div2.appendChild(h5);
+      div2.appendChild(small);
+      link.appendChild(paragraph);
+
+      if(msgindex > 0){
+        var prev = document.getElementById((msgindex-1).toString());
+        prev.className = 'list-group-item list-group-item-action flex-column align-items-start';
+      }
+      msgindex = msgindex + 1;
+    };
+
+    $.get("http://localhost:3000/readMsg", function(user, msg) {
+      alert("HELLO THIS IS THE VALUES " + user + msg);
+    })
+
+  </script>
+
+</head>
+<body>
+  <form action="http://localhost:3000/readMsg" method="GET">
+    <div class="list-group" id="meratest">
+
+    <script type="text/javascript">addmsg("Stephen Strange", "testING");
+        addmsg("Vmail", "but whatever");
+        addmsg("Mera", "im da best");
+  </script>
+  </div>
+</form>
+</body>
