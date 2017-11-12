@@ -13,7 +13,7 @@ setInterval(function(){
 
     // Track last variable and current one
     // If it's different, it implies it's a new message so send it to our node server
-    var user = POC.$('.interaction-header .participant-details').last().find('participant-name').text().trim();
+    // var user = POC.$('.interaction-container .active-conversation .chat-message').last().find('.user-name .truncated-name').text().trim();
 
     var lastMsg = POC.$('.interaction-container .active-conversation .chat-message .message-container').last().find('p').text().trim();
 
@@ -23,18 +23,29 @@ setInterval(function(){
         lastProcessed = lastMsg; 
 
         var jsonObj = {
-            user: user,
             message: lastProcessed
         };
 
-        jQuery.ajax("http://localhost:4000/readMsg", {
+        // var JSONStringed = JSON.stringify(jsonObj);
+
+        // console.log("JSONStringed = " + JSONStringed);
+
+        // // console.log("JSONStringed = " + JSONStringed['message']);
+
+        // var JSONParsed = JSON.parse(JSONStringed);
+
+        // console.log("JSONParsed = " + JSONParsed);
+
+        // console.log("JSONParsed.message = " + JSONParsed.message);
+
+        jQuery.ajax("http://localhost:3000/readMsg", {
             type: "POST",
             //url: "http://localhost:4000/test",
-            data: JSON.stringify(jsonObj),
+            data: jsonObj,
             //success: console.log("SEAN")
         }).then(() => {
             console.log('Msg sent to Node server!');
-        })
+        });
     }
 }, 5000);
     // }
