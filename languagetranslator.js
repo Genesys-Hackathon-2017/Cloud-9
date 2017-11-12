@@ -18,21 +18,26 @@ var language_translator = new LanguageTranslatorV2({
 });
 
 function testFunction(input) {
-language_translator.translate({
-  text: input, source : 'en', target: 'fr' },
-  function (err, result) {
-    if (err)
-      console.log('error:', err);
-    else
-      console.log(result.translations[0].translation);
-});
+  var translation;
+  language_translator.translate({
+    text: input, source : 'en', target: 'fr' },
+    function (err, result) {
+      if (err)
+        console.log('error:', err);
+      else
+        translation = result.translations[0].translation;
+        console.log(translation);
+          // Scope issue
+        return translation;
+    });
 }
 
 //var prompt = require('prompt-sync')();
 
 app.post("/readMsg", function(req, res){
-    testFunction(req.body.message);
+  var result = testFunction(req.body.message);
+  res.send(result);
 });
 
 var httpServer = http.createServer(app);
-httpServer.listen('8085');
+httpServer.listen('3000');
