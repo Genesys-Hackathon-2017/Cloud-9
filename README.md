@@ -10,4 +10,4 @@
 
 **Project Photos**:
 
-![](./Source Files/assets/img/Cloud9Demo.gif "Cloud 9 Demo")
+![](./Images/Cloud9Demo.gif "Cloud 9 Demo")
