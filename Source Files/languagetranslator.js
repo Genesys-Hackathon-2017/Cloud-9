@@ -55,6 +55,14 @@ function testFunction2(input) {
   })
 }
 
+app.get("/", function(req, res){
+    res.redirect("/login.html");
+});
+
+app.get("/demo", function(req, res){
+    res.redirect("/demo.html");
+});
+
 app.post("/readMsg", function(req, res) {
   translationtext = req.body.message;
   console.log(req.body.lang);
@@ -84,5 +92,6 @@ app.post("/readMsg", function(req, res) {
 app.get("/readMsg", function(req,res) {
   res.json(translationtext);
 });
+
 var httpServer = http.createServer(app);
 httpServer.listen('3000');
