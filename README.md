@@ -8,6 +8,6 @@
 
 **Team Members**: [Vimal Raghubir](https://github.com/Vimal-Raghubir), [Mera Gangapersaud](https://github.com/Mera-Gangapersaud) and [Sean Prashad](https://github.com/SeanPrashad).
 
-**Project Photos**:
+**Project Demo**:
 
 ![](./Images/Cloud9Demo.gif "Cloud 9 Demo")
